@@ -2,6 +2,7 @@ package cn.itsource;
 
 
 import cn.itsource.entity.User;
+import cn.itsource.service.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,9 @@ public class SpringBootAppTest {
 
     @Test
     public void contextLoads() {
-        User user=new User("王逵",18);
+       /* User user=new User("王逵",18);
         redisTemplate.opsForValue().set("user",user);
-        System.out.println(redisTemplate.opsForValue().get("user"));
+        System.out.println(redisTemplate.opsForValue().get("user"));*/
     }
 
     @Test
@@ -34,5 +35,14 @@ public class SpringBootAppTest {
         redisTemplate.opsForValue().set("name","yixin");
         System.out.println(redisTemplate.opsForValue().get("name"));
     }
+
+    @Autowired
+    UserServiceImpl userService;
+
+    @Test
+    public void queryAll() {
+        userService.queryAll().forEach(System.out::println);
+    }
+
 
 }
